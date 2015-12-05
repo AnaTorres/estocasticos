@@ -1,6 +1,8 @@
 #Lenguaje de entrada
 from sys import stdin
 import re
+import time
+import random
 import RSA
 
 
@@ -109,9 +111,46 @@ states = {'1': readMessage, '2':evalueEntry, '3':encrypt, '5':evalueExit, '6':wr
 def main(nameArchive):
     text=states.get('1')(nameArchive)
     print text
-    evalueEntry =states.get('2')(text,1)
-    print evalueEntry
-    if(evalueEntry==1):
+    #evalueEntry =states.get('2')(text,1)
+    
+    #decidir inicio
+    name='regi.txt'
+    fileRegis=open(name,'r')
+    line=fileRegis.readline();
+    history=line.split(',')
+    for i in range(len(history)):
+        history[i]=float(history[i])
+    ranNum=random.random()
+    prob=history[-1]
+    identif=2
+    if(ranNum<=prob):
+        identif=1
+
+    t0=time.clock()
+    evalueE =evalueEntry(nameArchive,identif)
+    t=time.clock()-t0
+    for i in range(len(history)):
+        if(t<history[i]):
+            history[i]=t
+            if(identif==1):
+                prob+=0.001
+            else:
+                prob-=0.001
+            break
+    fileRegis.close()
+    outText=''
+    for i in range(len(history)-1):
+        outText=outText+str(history[i])+','
+    outText=outText+str(prob)
+    fileRegis=open(name,'w')
+    fileRegis.write(outText)
+    fileRegis.close()
+    print 'termine bien :D'
+    #decidir fin
+
+    
+    print evalueE
+    if(evalueE==1):
         print 'Entró al if'
         textEncrypt=states.get('3')(text)
         for i in range(len(textEncrypt)):
@@ -122,9 +161,45 @@ def main(nameArchive):
     for a in range(len(textEncrypt)):
         stringEncrypt = stringEncrypt + str(textEncrypt[a]) + ' '
     print stringEncrypt
-    evalueExit = states.get('5')(stringEncrypt,1)
-    print evalueExit
-    if(evalueExit==1):
+    #evalueExit = states.get('5')(stringEncrypt,1)
+
+    #decidir inicio
+    name='regi.txt'
+    fileRegis=open(name,'r')
+    line=fileRegis.readline();
+    history=line.split(',')
+    for i in range(len(history)):
+        history[i]=float(history[i])
+    ranNum=random.random()
+    prob=history[-1]
+    identif=2
+    if(ranNum<=prob):
+        identif=1
+
+    t0=time.clock()
+    evalueEx =evalueExit(stringEncrypt,identif)
+    t=time.clock()-t0
+    for i in range(len(history)):
+        if(t<history[i]):
+            history[i]=t
+            if(identif==1):
+                prob+=0.001
+            else:
+                prob-=0.001
+            break
+    fileRegis.close()
+    outText=''
+    for i in range(len(history)-1):
+        outText=outText+str(history[i])+','
+    outText=outText+str(prob)
+    fileRegis=open(name,'w')
+    fileRegis.write(outText)
+    fileRegis.close()
+    print 'termine bien :D'
+    #decidir fin
+    
+    print evalueEx
+    if(evalueEx==1):
         print 'Entró al if de EXIT'
         states.get('6')(stringEncrypt)
 
