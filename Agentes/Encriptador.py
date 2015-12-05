@@ -30,7 +30,7 @@ def writeMessage(text):
 #Fin funcion de salida
 #Estados
 def readMessage(name):            ##Lee el mensaje del archivo txt, mientras no encuentre una linea vacía las lee y evalua si es válido su ingreso
-    print 'ESTOY EN READ MESSAGE'
+    #print 'ESTOY EN READ MESSAGE'
     archive=open(name,'r')         
     line=archive.readlines()        
     line2=""
@@ -41,7 +41,7 @@ def readMessage(name):            ##Lee el mensaje del archivo txt, mientras no 
 
 
 def evalueEntry(text,identifier):
-    print 'ESTOY EN EVALUE ENTRY'
+    #print 'ESTOY EN EVALUE ENTRY'
     #identifier= se define en este punto la manera en que se halla el identificador
     if (identifier == 1):
     #Entrada / Expresiones regulares
@@ -101,8 +101,8 @@ def encrypt(text):
     for i in range(len(textoPlano)):
         m = textoPlano[i]
         c.append(RSA.powerMod (m,e,n))
-    for i in range(len(c)):
-            print c[i]
+    #for i in range(len(c)):
+            #print c[i]
     return c
 
 states = {'1': readMessage, '2':evalueEntry, '3':encrypt, '5':evalueExit, '6':writeMessage}
@@ -110,7 +110,7 @@ states = {'1': readMessage, '2':evalueEntry, '3':encrypt, '5':evalueExit, '6':wr
 #Funcion de transicion
 def main(nameArchive):
     text=states.get('1')(nameArchive)
-    print text
+    #print text
     #evalueEntry =states.get('2')(text,1)
     
     #decidir inicio
@@ -145,22 +145,22 @@ def main(nameArchive):
     fileRegis=open(name,'w')
     fileRegis.write(outText)
     fileRegis.close()
-    print 'termine bien :D'
+    #print 'termine bien :D'
     #decidir fin
 
     
-    print evalueE
+    #print evalueE
     if(evalueE==1):
-        print 'Entró al if'
+        #print 'Entró al if'
         textEncrypt=states.get('3')(text)
-        for i in range(len(textEncrypt)):
-            print textEncrypt[i]
+        #for i in range(len(textEncrypt)):
+            #print textEncrypt[i]
     else:
         return False
     stringEncrypt= ''    
     for a in range(len(textEncrypt)):
         stringEncrypt = stringEncrypt + str(textEncrypt[a]) + ' '
-    print stringEncrypt
+    #print stringEncrypt
     #evalueExit = states.get('5')(stringEncrypt,1)
 
     #decidir inicio
@@ -195,12 +195,12 @@ def main(nameArchive):
     fileRegis=open(name,'w')
     fileRegis.write(outText)
     fileRegis.close()
-    print 'termine bien :D'
+    #print 'termine bien :D'
     #decidir fin
     
-    print evalueEx
+    #print evalueEx
     if(evalueEx==1):
-        print 'Entró al if de EXIT'
+        #print 'Entró al if de EXIT'
         states.get('6')(stringEncrypt)
 
 #Fin de funcion de transicion

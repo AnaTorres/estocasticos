@@ -113,7 +113,7 @@ states = {'1':readMessage, '2':evalueEntry, '3':desEncrypt, '5':evalueExit, '6':
 #Funcion de transicion
 def main(nameArchive):
     text=states.get('1')(nameArchive)
-    print text
+    #print text
     #evalueEntry =states.get('2')(text,2)
 
     #decidir inicio
@@ -148,21 +148,21 @@ def main(nameArchive):
     fileRegis=open(name,'w')
     fileRegis.write(outText)
     fileRegis.close()
-    print 'termine bien :D'
+    #print 'termine bien :D'
     #decidir fin
 
-    print evalueEntry
+    #print evalueEntry
     if(evalueEntry==1):
-        print 'Entró al if'
+        #print 'Entró al if'
         textEncrypt=states.get('3')(text)
-        for i in range(len(textEncrypt)):
-            print textEncrypt[i]
+        #for i in range(len(textEncrypt)):
+            #print textEncrypt[i]
     else:
         return False
     stringEncrypt= ''    
     for a in range(len(textEncrypt)):
         stringEncrypt = stringEncrypt + chr(textEncrypt[a])
-    print stringEncrypt
+    #print stringEncrypt
     #evalueExit = states.get('5')(stringEncrypt,2)
     
     #decidir inicio
@@ -197,12 +197,12 @@ def main(nameArchive):
     fileRegis=open(name,'w')
     fileRegis.write(outText)
     fileRegis.close()
-    print 'termine bien :D'
+    #print 'termine bien :D'
     #decidir fin
     
-    print evalueExit
+    #print evalueExit
     if(evalueExit==1):
-        print 'Entró al if de EXIT'
+        #print 'Entró al if de EXIT'
         states.get('6')(stringEncrypt)
 #Fin de funcion de transicion
 
