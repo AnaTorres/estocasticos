@@ -1,9 +1,2 @@
-nazly
-
-Tenemos mucho que hacer
-
-no hay nada
-
-Este es el archivo de los estados
-
-no hay nada
+Funciona2
+empty

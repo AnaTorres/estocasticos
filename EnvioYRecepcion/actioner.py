@@ -20,7 +20,7 @@ def write(name,s):
 	#name = raw_input('Enter name of text file:') + '.txt'
 	try:
 		print "Updating " + name +" file\n"		
-		file = open(name, 'a')
+		file = open(name, 'w')
 		file.write(s)
 		file.close()
 	except:
@@ -35,14 +35,13 @@ def recibir(filename):
 	addr = (host, port)
 	UDPSock = socket(AF_INET, SOCK_DGRAM)
 	UDPSock.bind(addr)
-	UDPSock.settimeout(5)
+	UDPSock.settimeout(1)
 	print "5 secs to Wait to recive messages...\n"
 	try:
 		(data, addr) = UDPSock.recvfrom(buf)
-		print "message recived\n"
 	except:
 		"TimeOut"
-	if data != "\nno hay nada" and data != "":
+	if data != "empty" and data != "":
 		write(filename,str(data))
 	UDPSock.close()
         return data
@@ -79,7 +78,7 @@ def main():
 #	    i = i + 1
             enviar(get_ip_address(),ip)
             recibir(filename)
-	    time.sleep(.01)
+	    time.sleep(.005)
     
     
 main()

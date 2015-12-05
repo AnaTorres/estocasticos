@@ -18,20 +18,19 @@ def recibir():
     port = 13000
     buf = 1024
     addr = (host, port)
-    print addr    
+    #print addr    
     UDPSock = socket(AF_INET, SOCK_DGRAM)
     UDPSock.bind(addr)
     (data, addr) = UDPSock.recvfrom(buf)
-    print "Received message: " + data    
+    print "\n\n-> Message Recived."    
 
     (ip, addr) = UDPSock.recvfrom(buf)
-    print "Received message2: " + ip    
+    print "Ip:\t" + ip    
 
     UDPSock.close()
     return data,ip
 
 def enviar(file1,ip):
-    print "Received message3: " + file1     
     host = ip
     port = 13000
     addr = (host, port)
@@ -40,13 +39,13 @@ def enviar(file1,ip):
     archi=open(file1,'r')
     linea=archi.readline();
     while linea!="":
-       data= data + "\n" + linea           
+       data= data + linea           
        linea=archi.readline()
     archi.close()
     UDPSock.sendto(data, addr)
     
     archi=open(file1,'w')
-    archi.write('no hay nada')
+    archi.write('empty')
     archi.close()
     UDPSock.close()
 
@@ -56,10 +55,5 @@ def main():
  
     while True:    
         name=recibir()
-        print name
         enviar(name[0],str(name[1]))
-
 main()
-
-
-
