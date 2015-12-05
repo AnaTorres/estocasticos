@@ -150,51 +150,6 @@ def generarLlave():
     #print 'Llave privada: (',d,',',n,')'
     return e,d,n 
 
-#def encriptar(text):
-
-
-    
-def desencriptar():
-    try:
-        ent=[]
-        textoPlano = []
-        c = []
-        print '\nAQUÍ SE VA A DESENCRIPTAR'
-        print '\nSelecciones el modo de desencriptar'
-        print '\n1. Ingresando la llave pública y la llave privada'
-        print '2. Ingresando únicamente la llave pública'
-        op = int(input())
-        print'Ingrese la llave pública (cada término separado por un espacio (e,n))'
-        llaveP = sys.stdin.readline().strip().split()
-        e = int(llaveP[0])
-        n = int(llaveP[1])
-        if op == 1:
-            print'Ingrese la llave privada (cada término separado por un espacio (d,n))'
-            llave = sys.stdin.readline().strip().split()
-            d = int(llave[0])
-        elif op == 2:
-            d = encontrarD(n,e)
-        else:
-            print'Opción inválida\nIntente de nuevo \n\n'
-            desencriptar()
-        print 'Ingrese el texto cifrado \nInstrucciones: ingrese los números separados entre sí por un espacio \nal terminar de ingresar el mensaje presione enter y obtendrá el mensaje original.'
-        ent = sys.stdin.readline().strip().split()
-        for i in range(len(ent)):
-            c.append(int(ent[i]))
-        for i in range(len(c)):
-            temp = c[i]
-            textoPlano.append(powerMod(temp,d,n))
-        print '\nMensaje original: \n'
-        try:
-            for i in range(len(textoPlano)):
-                print chr(textoPlano[i])
-        except ValueError:
-            for i in range(len(textoPlano)):
-                print textoPlano[i]
-    except ValueError:
-        print'Opción inválida\nIntente de nuevo \n\n'
-        desencriptar()    
-    
 def main():
     try:
         print '\nBienvenido al sistema de encriptación RSA \n    Por favor seleccione una opción'
