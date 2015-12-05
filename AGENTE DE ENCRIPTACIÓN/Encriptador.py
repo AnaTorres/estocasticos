@@ -59,9 +59,9 @@ def evalueEntry(text,identifier):
                 correct=False
                 break
         if( correct == True):
-            return True
+            return 1
         else:
-            return False
+            return 0
 
 def evalueExit(text,identifier):
     #identifier= se define en este punto la manera en que se halla el identificador
