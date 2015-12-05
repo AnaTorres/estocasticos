@@ -1,4 +1,4 @@
-# This Python file uses the following encoding: utf-8
+﻿# This Python file uses the following encoding: utf-8
 import os,sys
 import random
 
@@ -138,39 +138,12 @@ def generarLlave():
     phi = (p-1)*(q-1)
     e = aleatorioE(phi)
     d = eea(phi,e)
-    archive=open('llaves.txt','w')
+    archive=open('keys.txt','w')
     archive.close()
-    archive=open('llaves.txt','a')
+    archive=open('keys.txt','a')
     publica = str(e) + ' ' + str(n) + '\n'
     privada = str (d) + ' ' + str(n)
     archive.write(publica)
     archive.write(privada)
     archive.close()
-    #print '\nLlave pública: (',e,',',n,')'
-    #print 'Llave privada: (',d,',',n,')'
     return e,d,n 
-
-def main():
-    try:
-        print '\nBienvenido al sistema de encriptación RSA \n    Por favor seleccione una opción'
-        print '\n1.Encriptar \n2.Desencripar \n3.Salir'
-        T= int(sys.stdin.readline())
-        if (T==1):
-            encriptar('hola')
-            main()
-        elif (T==2):
-            desencriptar()
-            main()
-        elif (T==3):
-            print 'Hasta pronto :D'
-        else:            
-            print 'Opcion inválida\nIntente de nuevo \n\n'
-            main()
-    except ValueError:
-        print'Opción inválida\nIntente de nuevo \n\n'
-        main()
-
-
-
-
-
