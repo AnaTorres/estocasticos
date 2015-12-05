@@ -127,7 +127,7 @@ def main(nameArchive):
         identif=1
 
     t0=time.clock()
-    evalueE =evalueEntry(nameArchive,identif)
+    evalueE =states.get('2')(nameArchive,identif)
     t=time.clock()-t0
     for i in range(len(history)):
         if(t<history[i]):
@@ -177,7 +177,7 @@ def main(nameArchive):
         identif=1
 
     t0=time.clock()
-    evalueEx =evalueExit(stringEncrypt,identif)
+    evalueEx =states.get('5')(stringEncrypt,identif)
     t=time.clock()-t0
     for i in range(len(history)):
         if(t<history[i]):
