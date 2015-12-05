@@ -3,14 +3,15 @@ from sys import stdin
 import os, re
 import RSA
 
-entry_language=["0","1","2","3","4","5","6","7","8","9","\n"]
-inputPattern = re.compile('([[a-z]*[A-Z]*[0-9]*[\s]*!*"*[#]*[$]*%*&*[\']*[(]*[)]*[\*]*[+]*[,]*[.]*[-]*[.]*[/]*[:]*[;]*[<]*[>]*[=]*[?]*[`]*[{]*[|]*[~]*[}]*]*){1,300}')
+entry_language=['0','1','2','3','4','5','6','7','8','9','\n',' ']
+inputPattern = re.compile('([0-9]+[\s]*)')
+
 #Fin lenguaje de entrada
 #Lenguaje de salida
 exit_language=[" ","!","\"","#","$","%","&","\'","(",")","*","+",",","-",".","/","0","1","2","3","4","5","6","7","8","9",":",";","<","=",">","?",
                 "@","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","[","]","^","_","`",
                 "a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","{","|","}","~","\\","\n"]
-exitPattern = re.compile('([0-9]+[\s]*)')
+exitPattern = re.compile('([[a-z]*[A-Z]*[0-9]*[\s]*!*"*[#]*[$]*%*&*[\']*[(]*[)]*[\*]*[+]*[,]*[.]*[-]*[.]*[/]*[:]*[;]*[<]*[>]*[=]*[?]*[`]*[{]*[|]*[~]*[}]*]*){1,300}')
 #Fin lenguaje de salida
 #Funcion de salida
 
@@ -39,7 +40,7 @@ def evalueEntry(text,identifier):
     if(identifier==1):
     #Entrada / Expresiones regulares    
         
-        if (re.match(exitPattern,text)):
+        if (re.match(inputPattern,text)):
             return 1
         else:
             return 0
@@ -50,7 +51,7 @@ def evalueEntry(text,identifier):
             correct = True
             
         for i in text:
-            if ( (i in exit_language) == False):
+            if ( (i in entry_language) == False):
                 correct=False
                 break
         if( correct == True):
@@ -64,7 +65,7 @@ def evalueExit(text,identifier):
     #Salida / Expresiones regulares
     
 
-        if (re.match(inputPattern,text)):
+        if (re.match(exitPattern,text)):
             return 1
         else:
             return 0
@@ -75,7 +76,7 @@ def evalueExit(text,identifier):
             correct = True
         
         for i in text:
-            if ( (i in entry_language) == False):
+            if ( (i in exit_language) == False):
                 corerct=False
                 break
         if( correct == True):
@@ -111,7 +112,7 @@ states = {'1':readMessage, '2':evalueEntry, '3':desEncrypt, '5':evalueExit, '6':
 def main(nameArchive):
     text=states.get('1')(nameArchive)
     print text
-    evalueEntry =states.get('2')(text,1)
+    evalueEntry =states.get('2')(text,2)
     print evalueEntry
     if(evalueEntry==1):
         print 'Entró al if'
@@ -124,7 +125,7 @@ def main(nameArchive):
     for a in range(len(textEncrypt)):
         stringEncrypt = stringEncrypt + chr(textEncrypt[a])
     print stringEncrypt
-    evalueExit = states.get('5')(stringEncrypt,1)
+    evalueExit = states.get('5')(stringEncrypt,2)
     print evalueExit
     if(evalueExit==1):
         print 'Entró al if de EXIT'

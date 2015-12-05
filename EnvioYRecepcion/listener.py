@@ -34,6 +34,7 @@ def enviar(file1,ip):
     host = ip
     port = 13000
     addr = (host, port)
+    print addr
     UDPSock = socket(AF_INET, SOCK_DGRAM)
     data=""
     archi=open(file1,'r')
