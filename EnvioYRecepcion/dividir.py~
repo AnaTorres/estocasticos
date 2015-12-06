@@ -175,7 +175,6 @@ def dividir(fileName):
     archLengTrans=open(letraIdentif+'6.txt','w')
     archLengTrans.write(funcTrans)
     archLengTrans.close()
-    #print 'wiiii >:DDDDD'
 
     
 
