@@ -65,19 +65,21 @@ def askInfo(filename):
 
 
 def main():
-    files = "encryptedmessage.txt"
-    files2 = "keys.txt"
-    ips = askInfo("ips.txt")
-    for ip in ips:
-	enviar(files,ip)
-	enviar(get_ip_address(),ip)
-	recibir(files)
-	time.sleep(.005)
+    M = askInfo("encrypted message.txt")
+    s = ''
+    for i in M:
+        s = s + i
+    files = s
 
-	enviar(files2,ip)
-	enviar(get_ip_address(),ip)
-	recibir(files2)
-	time.sleep(.005)
+    K = askInfo("keys.txt")
+    keys = ''
+    for c in K:
+        keys = keys + i
+    files2 = keys
+    ip = raw_input("Targer IP:\t")
+    enviar(files,ip)
+    time.sleep(.5)
+    enviar(files2,ip)
     
     
 main()
