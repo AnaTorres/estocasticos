@@ -8,6 +8,8 @@ def reunir(tipo):
     arch4=open(tipo+'4.txt','r')
     arch5=open(tipo+'5.txt','r')
     arch6=open(tipo+'6.txt','r')
+    arch7=open(tipo+'7.txt','r')
+    arch8=open(tipo+'8.txt','r')
     first=arch0.readlines()
     second=arch1.readlines()
     third=arch2.readlines()
@@ -15,6 +17,8 @@ def reunir(tipo):
     fifth=arch4.readlines()
     six=arch5.readlines()
     seven=arch6.readlines()
+    eight=arch7.readlines()
+    nine=arch8.readlines()
     outputText=''
     for i in range(len(first)):
         outputText=outputText+str(first[i])
@@ -32,10 +36,14 @@ def reunir(tipo):
         outputText=outputText+str(six[i])
     for i in range(len(seven)):
         outputText=outputText+str(seven[i])
+    for i in range(len(eight)):
+        outputText=outputText+str(seven[i])
+    for i in range(len(nine)):
+        outputText=outputText+str(seven[i])
     outputText=outputText+'\n'
     output=open('agente.py','w')
     output.write(outputText)
     output.close()
 
-
-reunir('ae')
+tip =raw_input('tipo: ')
+reunir(tip)
