@@ -22,7 +22,7 @@ def recibir():
     UDPSock = socket(AF_INET, SOCK_DGRAM)
     UDPSock.bind(addr)
     (data, addr) = UDPSock.recvfrom(buf)
-    print "\n\n-> Message Recived." 
+    print "\n\n-> Message Recived." + data   
 
     (ip, addr) = UDPSock.recvfrom(buf)
     print "Ip:\t" + ip    
