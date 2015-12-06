@@ -1,1 +1,30 @@
-empty
+#Estados2
+def evalueExit(text,identifier):
+    if(identifier==1):
+    #Salida / Expresiones regulares    
+        
+        if (re.match(exitPattern,text)):
+            return 1
+        else:
+            return 0
+    elif(identifier==2):
+    #Salida / arreglo
+        correct = True
+            
+        for i in text:
+            if ( (i in exit_language) == False):
+                correct=False
+                break
+        if( correct == True):
+            return 1
+        else:
+            return 0
+
+def encrypt(text):
+    ent=[]
+    textoPlano = []
+    c = []
+    tp = text.strip().split()
+    palabras = []
+    for i in range(len(tp)):
+        palabras.append(tp[i])

@@ -164,22 +164,57 @@ def dividir(fileName):
     funcTrans=funcTrans+'#Funcion de transicion\n'
     
     variable=False
+    cont=34
     if(re.search('#Fin de funcion de transicion',line)):
         variable=True;
     while variable!=True:
         line=archAgent.readline()
         funcTrans=funcTrans+line
-        if(re.search('#Fin de funcion de transicion',line)):
+        cont=cont-1
+        if(re.search('#Fin de funcion de transicion',line) or cont<=0):
             variable=True;
 
     archLengTrans=open(letraIdentif+'6.txt','w')
     archLengTrans.write(funcTrans)
     archLengTrans.close()
+
+    variable=False
+    cont=34
+    funcTrans2=''
+    if(re.search('#Fin de funcion de transicion',line)):
+        variable=True;
+    while variable!=True:
+        line=archAgent.readline()
+        funcTrans2=funcTrans2+line
+        cont=cont-1
+        if(re.search('#Fin de funcion de transicion',line) or cont<=0):
+            variable=True;
+
+    archLengTrans=open(letraIdentif+'7.txt','w')
+    archLengTrans.write(funcTrans2)
+    archLengTrans.close()
+
+    variable=False
+    cont=34
+    funcTrans3=''
+    if(re.search('#Fin de funcion de transicion',line)):
+        variable=True;
+    while variable!=True:
+        line=archAgent.readline()
+        funcTrans3=funcTrans3+line
+        cont=cont-1
+        if(re.search('#Fin de funcion de transicion',line) or cont<=0):
+            variable=True;
+
+    archLengTrans=open(letraIdentif+'8.txt','w')
+    archLengTrans.write(funcTrans3)
+    archLengTrans.close()
+
     #print 'wiiii >:DDDDD'
 
     
 
-
-dividir('Encriptador.py')
+tip =raw_input('Archivo a dividir: ')
+dividir(tip)
     
         

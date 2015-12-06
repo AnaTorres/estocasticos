@@ -28,4 +28,18 @@ def evalueEntry(text,identifier):
             return 1
         else:
             return 0
-#Fin Estados
+
+def evalueExit(text,identifier):
+    if(identifier==1):
+    #Salida / Expresiones regulares    
+        
+        if (re.match(exitPattern,text)):
+            return 1
+        else:
+            return 0
+    elif(identifier==2):
+    #Salida / arreglo
+        correct = True
+            
+        for i in text:
+            if ( (i in
