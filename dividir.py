@@ -102,18 +102,52 @@ def dividir(fileName):
             variable=True;
     #print 'wiiii'
     estados=estados+'#Estados\n'
-    
+
+    cont=30
     variable=False
     if(re.search('#Fin estados',line)):
         variable=True;
     while variable!=True:
         line=archAgent.readline()
         estados=estados+line
-        if(re.search('#Fin estados',line)):
+        cont=cont-1
+        if(re.search('#Fin estados',line) or cont<=0):
             variable=True;
-
+    
     archLengEst=open(letraIdentif+'3.txt','w')
     archLengEst.write(estados)
+    archLengEst.close()
+
+    cont=30
+    estados1=''
+    variable=False
+    if(re.search('#Fin estados',line)):
+        variable=True;
+    while variable!=True:
+        line=archAgent.readline()
+        estados1=estados1+line
+        cont=cont-1
+        if(re.search('#Fin estados',line) or cont<=0):
+            variable=True;
+
+    archLengEst=open(letraIdentif+'4.txt','w')
+    archLengEst.write(estados1)
+    archLengEst.close()
+
+    estados2=''
+    cont=30
+    variable=False
+    if(re.search('#Fin estados',line)):
+        variable=True;
+    while variable!=True:
+        line=archAgent.readline()
+        estados2=estados2+line
+        cont=cont-1
+        if(re.search('#Fin estados',line) or cont<=0):
+            variable=True;
+
+    archLengEst=open(letraIdentif+'5.txt','w')
+    archLengEst.write(estados2)
     archLengEst.close()
 
     #Funcion de transicion
@@ -138,7 +172,7 @@ def dividir(fileName):
         if(re.search('#Fin de funcion de transicion',line)):
             variable=True;
 
-    archLengTrans=open(letraIdentif+'4.txt','w')
+    archLengTrans=open(letraIdentif+'6.txt','w')
     archLengTrans.write(funcTrans)
     archLengTrans.close()
     #print 'wiiii >:DDDDD'
