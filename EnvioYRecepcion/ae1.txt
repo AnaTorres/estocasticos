@@ -1,5 +1,0 @@
-#Lenguaje de salida
-
-exit_language=["0","1","2","3","4","5","6","7","8","9","\n",' ']
-exitPattern = re.compile('([0-9]+[\s]*)')
-#Fin lenguaje de salida
