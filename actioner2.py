@@ -74,8 +74,9 @@ def main():
     K = askInfo("keys.txt")
     keys = ''
     for c in K:
-        keys = keys + i
+        keys = keys + c
     files2 = keys
+    #print K, "\n\n---\n\n" ,files2
     ip = raw_input("Targer IP:\t")
     enviar(files,ip)
     time.sleep(.5)
