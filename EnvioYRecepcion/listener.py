@@ -22,7 +22,7 @@ def recibir():
     UDPSock = socket(AF_INET, SOCK_DGRAM)
     UDPSock.bind(addr)
     (data, addr) = UDPSock.recvfrom(buf)
-    print "\n\n-> Message Recived."    
+    print "\n\n-> Message Recived." + data   
 
     (ip, addr) = UDPSock.recvfrom(buf)
     print "Ip:\t" + ip    
@@ -37,17 +37,20 @@ def enviar(file1,ip):
     print addr
     UDPSock = socket(AF_INET, SOCK_DGRAM)
     data=""
-    archi=open(file1,'r')
-    linea=archi.readline();
-    while linea!="":
-       data= data + linea           
-       linea=archi.readline()
-    archi.close()
-    UDPSock.sendto(data, addr)
-    
-    archi=open(file1,'w')
-    archi.write('empty')
-    archi.close()
+    try:
+    	archi=open(file1,'r')
+    	linea=archi.readline();
+        while linea!="":
+		   data= data + linea           
+		   linea=archi.readline()
+        archi.close()
+        UDPSock.sendto(data, addr)
+		
+        archi=open(file1,'w')
+        archi.write('empty')
+        archi.close()
+    except:
+        print "file do not exist"
     UDPSock.close()
 
 
