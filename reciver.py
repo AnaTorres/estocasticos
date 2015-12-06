@@ -65,7 +65,7 @@ def askInfo(filename):
     return data
 
 def main():
-    message = recibir("encrypted message.txt")
+    message = recibir("encryptedmessage.txt")
     keys = recibir("keys.txt")
     print message, keys
 

@@ -200,7 +200,7 @@ def main(nameArchive):
     if(evalueExit==1):
         print 'Entró al if de EXIT'
         states.get('6')(stringEncrypt)
-main('encrypted message.txt')
+main('encryptedmessage.txt')
 #Fin de funcion de transicion
         
 

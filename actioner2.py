@@ -65,7 +65,7 @@ def askInfo(filename):
 
 
 def main():
-    M = askInfo("encrypted message.txt")
+    M = askInfo("encryptedmessage.txt")
     s = ''
     for i in M:
         s = s + i

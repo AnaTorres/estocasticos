@@ -21,9 +21,9 @@ exitPattern = re.compile('([0-9]+[\s]*)')
 #Funcion de salida
 
 def writeMessage(text):
-    archive=open('encrypted message.txt','w')
+    archive=open('encryptedmessage.txt','w')
     archive.close()
-    archive=open('encrypted message.txt','a')
+    archive=open('encryptedmessage.txt','a')
     archive.write(text)
     archive.close()
 
