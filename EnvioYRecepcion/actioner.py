@@ -68,7 +68,12 @@ def askInfo(filename):
 def main():
     files = askInfo("FilesToAsk.txt")
     ips = askInfo("ips.txt")
-    #print files, len(files)
+    agente = raw_input("what agent do you want to recomplie:\t")
+    if agente == 'Encriptador':
+	files = files[:9]
+    else:
+	files = files[9:]	
+    print files
 #    i = 1
     for ip in ips:
 	print "\n\nasking to\t" + ip + "\n----------------------------------------\n"
