@@ -136,9 +136,14 @@ def main(nameArchive):
     fileRegis=open(name,'w')
     fileRegis.write(outText)
     fileRegis.close()
-#Funcion de transicion
-def main(nameArchive):
-    text=states.get('1')(nameArchive)
+    #decidir fin
+    if(evalueE==1):
+        textEncrypt=states.get('3')(text)
+    else:
+        return False
+    stringEncrypt= ''    
+    for a in range(len(textEncrypt)):
+        stringEncrypt = stringEncrypt + str(textEncrypt[a]) + ' '
     #decidir inicio
     name='regi.txt'
     fileRegis=open(name,'r')
@@ -153,7 +158,7 @@ def main(nameArchive):
         identif=1
 
     t0=time.clock()
-    evalueE =states.get('2')(nameArchive,identif)
+    evalueEx =states.get('5')(stringEncrypt,identif)
     t=time.clock()-t0
     for i in range(len(history)):
         if(t<history[i]):
@@ -170,14 +175,9 @@ def main(nameArchive):
     outText=outText+str(prob)
     fileRegis=open(name,'w')
     fileRegis.write(outText)
-#Funcion de transicion
-def main(nameArchive):
-    text=states.get('1')(nameArchive)
-    #decidir inicio
-    name='regi.txt'
-    fileRegis=open(name,'r')
-    line=fileRegis.readline();
-    history=line.split(',')
-    for i in range(len(history)):
-        history[i]=float(history[i])
+    fileRegis.close()
+    #decidir fin
+    if(evalueEx==1):
+        states.get('6')(stringEncrypt)
+#Fin de funcion de transicion
 

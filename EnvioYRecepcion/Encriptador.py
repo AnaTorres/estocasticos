@@ -177,5 +177,5 @@ def main(nameArchive):
     #decidir fin
     if(evalueEx==1):
         states.get('6')(stringEncrypt)
-#Fin de funcion de transicion
 main('archivo.txt')
+#Fin de funcion de transicion
