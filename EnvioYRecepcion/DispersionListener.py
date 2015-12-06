@@ -12,7 +12,7 @@ def write(name,s):
     #name = raw_input('Enter name of text file:') + '.txt'
     try:
         print "Updating " + name +" file\n"        
-        file = open('datos.txt', 'w')
+        file = open(name, 'w')
         file.write(s)
         file.close()
 
@@ -31,7 +31,7 @@ def recibir():
     (name, addr) = UDPSock.recvfrom(buf)
     print name
     (data, addr) = UDPSock.recvfrom(buf)
-    print data
+    #print data
     if data != "\nempty" and data != "":
         write(name,str(data))
     UDPSock.close()
@@ -44,7 +44,7 @@ def enviar(ip):
     buf = 1024
     addr = (host, port)
     UDPSock = socket(AF_INET, SOCK_DGRAM)
-    print addr
+    #print addr
     UDPSock.sendto("bandera", addr)
     UDPSock.close()
 
@@ -58,7 +58,7 @@ def recibir_pedido():
     UDPSock = socket(AF_INET, SOCK_DGRAM)
     UDPSock.bind(addr)
     (ip, addr) = UDPSock.recvfrom(buf)
-    print ip
+    #print ip
     UDPSock.close()
     return ip
 
@@ -66,8 +66,11 @@ def recibir_pedido():
 def main():
     while True:   
         ip=recibir_pedido()
+	print "incoming comunication form:\t" + ip
         enviar(ip)
+	print "Responding ip to handle communication:\t"
         recibir()
+	print "reciving data from:\t" + ip
         
 
 main()   
