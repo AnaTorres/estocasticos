@@ -147,7 +147,7 @@ def main(nameArchive):
 
     print evalueE
     if(evalueE==1):
-        print 'Entró al if'
+        print 'Entro al if'
         textEncrypt=states.get('3')(text)
         for i in range(len(textEncrypt)):
             print textEncrypt[i]
@@ -194,7 +194,7 @@ def main(nameArchive):
     
     print evalueEx
     if(evalueEx==1):
-        print 'Entró al if de EXIT'
+        print 'Entro al if de EXIT'
         states.get('6')(stringEncrypt)
 main('archivo.txt')
 #Fin de funcion de transicion
