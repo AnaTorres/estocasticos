@@ -1,0 +1,4 @@
+import subprocess
+
+subprocess.Popen("python listener.py", shell=True)
+subprocess.Popen("python actioner.py", shell=True)

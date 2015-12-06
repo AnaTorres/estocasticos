@@ -1,4 +1,4 @@
-#Encriptar
+#Encriptar 
 #Lenguaje de entrada
 from sys import stdin
 import re
@@ -11,11 +11,13 @@ entry_language=[" ","!","\"","#","$","%","&","\'","(",")","*","+",",","-",".","/
 inputPattern = re.compile('([[a-z]*[A-Z]*[0-9]*[\s]*!*"*[#]*[$]*%*&*[\']*[(]*[)]*[\*]*[+]*[,]*[.]*[-]*[.]*[/]*[:]*[;]*[<]*[>]*[=]*[?]*[`]*[{]*[|]*[~]*[}]*]*){1,300}')
 
 #Fin lenguaje de entrada
+
 #Lenguaje de salida
 
 exit_language=["0","1","2","3","4","5","6","7","8","9","\n",' ']
 exitPattern = re.compile('([0-9]+[\s]*)')
 #Fin lenguaje de salida
+
 #Funcion de salida
 
 def writeMessage(text):
@@ -177,5 +179,5 @@ def main(nameArchive):
     #decidir fin
     if(evalueEx==1):
         states.get('6')(stringEncrypt)
-main('archivo.txt')
 #Fin de funcion de transicion
+

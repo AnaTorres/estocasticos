@@ -37,9 +37,9 @@ def reunir(tipo):
     for i in range(len(seven)):
         outputText=outputText+str(seven[i])
     for i in range(len(eight)):
-        outputText=outputText+str(eight[i])
+        outputText=outputText+str(seven[i])
     for i in range(len(nine)):
-        outputText=outputText+str(nine[i])
+        outputText=outputText+str(seven[i])
     outputText=outputText+'\n'
     output=open('agente.py','w')
     output.write(outputText)

@@ -1,0 +1,11 @@
+#Funcion de salida
+
+def writeMessage(text):
+    archive=open('encrypted message.txt','w')
+    archive.close()
+    archive=open('encrypted message.txt','a')
+    archive.write(text)
+    archive.close()
+
+
+#Fin funcion de salida

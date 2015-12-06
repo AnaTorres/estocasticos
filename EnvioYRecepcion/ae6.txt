@@ -1,0 +1,35 @@
+#Funcion de transicion
+def main(nameArchive):
+    text=states.get('1')(nameArchive)
+    #decidir inicio
+    name='regi.txt'
+    fileRegis=open(name,'r')
+    line=fileRegis.readline();
+    history=line.split(',')
+    for i in range(len(history)):
+        history[i]=float(history[i])
+    ranNum=random.random()
+    prob=history[-1]
+    identif=2
+    if(ranNum<=prob):
+        identif=1
+
+    t0=time.clock()
+    evalueE =states.get('2')(nameArchive,identif)
+    t=time.clock()-t0
+    for i in range(len(history)):
+        if(t<history[i]):
+            history[i]=t
+            if(identif==1):
+                prob+=0.001
+            else:
+                prob-=0.001
+            break
+    fileRegis.close()
+    outText=''
+    for i in range(len(history)-1):
+        outText=outText+str(history[i])+','
+    outText=outText+str(prob)
+    fileRegis=open(name,'w')
+    fileRegis.write(outText)
+    fileRegis.close()
